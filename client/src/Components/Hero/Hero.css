@@ -75,9 +75,13 @@
     }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 500px) {
     .hero{
         padding-left: 1rem;
         padding-right: 1rem;
+    }
+
+    .hero .left{
+        font-size: 35px;
     }
 }
