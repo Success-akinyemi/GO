@@ -1,0 +1,139 @@
+.registration{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--main-color);
+}
+
+.registration .mainLogo .icon{
+    font-size: 30px;
+}
+
+.registration .line{
+    width: 80%;
+    height: 3px;
+    background: var(--main-color);
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.registration .card{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 10px;
+    background: var(--white);
+    color: var(--main-color);
+    width: 25vw;
+}
+
+.registration .card .cardContent{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.registration .card .cardContent .inputGroup{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+    font-family: "Mochiy Pop P One", sans-serif;
+}
+
+.registration .inputGroup label{
+    margin-bottom: 0.5rem;
+    font-weight: 400;
+    font-size: 17px;
+    font-family: "Mochiy Pop P One", sans-serif;
+}
+
+.registration .inputGroup input{
+    border: none;
+    outline: none;
+    border-bottom: 4px solid var(--dark);
+    transition: var(--transition);
+    font-size: 18px;
+    padding: 5px;
+    font-family: "Mochiy Pop P One", sans-serif;
+}
+
+.registration .inputGroup input:focus{
+    border-bottom: 4px solid var(--main-color);
+}
+
+.registration .inputGroup button{
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    background: var(--main-color);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Mochiy Pop P One", sans-serif;
+    font-size: 22px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.registration .inputGroup button:hover{
+    transform: scale(0.97);
+}
+
+.registration small{
+    margin-top: -1rem;
+    font-weight: 500;
+    font-size: 15px;
+    color: var(--dark);
+    margin-bottom: 1rem;
+}
+
+.registration small .link{
+    color: var(--main-color);
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.registration .errorText{
+    font-family: "Mochiy Pop P One", sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    display: flex;
+    text-align: center;
+    color: var(--danger);
+}
+
+@media screen and (max-width: 1200px) {
+    .registration .card{
+        width: 40vw;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .registration .card{
+        width: 50vw;
+    }
+}
+
+@media screen and (max-width: 678px) {
+    .registration .card{
+        width: 60vw;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .registration .card{
+        width: 80vw;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .registration .card{
+        width: 85vw;
+    }
+}

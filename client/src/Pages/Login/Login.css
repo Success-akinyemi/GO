@@ -1,0 +1,140 @@
+.login{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--main-color);
+}
+
+.login .mainLogo .icon{
+    font-size: 30px;
+}
+
+.login .line{
+    width: 80%;
+    height: 3px;
+    background: var(--main-color);
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.login .card{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 10px;
+    background: var(--white);
+    color: var(--main-color);
+    width: 25vw;
+}
+
+.login .card .cardContent{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.login .card .cardContent .inputGroup{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+    font-family: "Mochiy Pop P One", sans-serif;
+}
+
+.login .inputGroup label{
+    margin-bottom: 0.5rem;
+    font-weight: 400;
+    font-size: 17px;
+    font-family: "Mochiy Pop P One", sans-serif;
+}
+
+.login .inputGroup input{
+    border: none;
+    outline: none;
+    border-bottom: 4px solid var(--dark);
+    transition: var(--transition);
+    font-size: 18px;
+    padding: 5px;
+    font-family: "Mochiy Pop P One", sans-serif;
+}
+
+.login .inputGroup input:focus{
+    border-bottom: 4px solid var(--main-color);
+}
+
+.login .inputGroup button{
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    background: var(--main-color);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Mochiy Pop P One", sans-serif;
+    font-size: 22px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.login .inputGroup button:hover{
+    transform: scale(0.97);
+}
+
+.login small{
+    margin-top: -1rem;
+    font-weight: 500;
+    font-size: 15px;
+    color: var(--dark);
+    margin-bottom: 1rem;
+}
+
+.login small .link{
+    color: var(--main-color);
+    font-size: 16px;
+    font-weight: 800;
+}
+
+
+.login .errorText{
+    font-family: "Mochiy Pop P One", sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    display: flex;
+    text-align: center;
+    color: var(--danger);
+}
+
+@media screen and (max-width: 1200px) {
+    .login .card{
+        width: 40vw;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .login .card{
+        width: 50vw;
+    }
+}
+
+@media screen and (max-width: 678px) {
+    .login .card{
+        width: 60vw;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .login .card{
+        width: 80vw;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .login .card{
+        width: 85vw;
+    }
+}

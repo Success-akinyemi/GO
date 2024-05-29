@@ -1,0 +1,83 @@
+.hero{
+    margin-top: 65px;
+    padding-left: 5rem;
+    padding-right: 5rem;
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.hero .left,
+.hero .right{
+    flex: 1;
+    flex-wrap: wrap;
+}
+
+.hero .left{
+    font-size: 50px;
+    font-weight: 400;
+}
+
+.hero .left span{
+    font-family: "Mochiy Pop P One", sans-serif;
+    color: var(--main-color);
+}
+
+.hero .mainLogo{
+    color: var(--main-color);
+    font-size: 80px;
+}
+
+.hero .left .text{
+    font-size: 20px;
+    margin-top: -4rem;
+    font-weight: 900;
+    color: var(--main-color);
+}
+
+.hero .getStarted{
+    font-size: 20px;
+    background: var(--main-color);
+    border: 3px solid var(--main-color);
+    padding: 10px 20px;
+    border-radius: 20px;
+    color: var(--white);
+    font-weight: 600;
+    transition:  var(--transition);
+}
+
+.hero .getStarted:hover{
+    border: 3px solid var(--main-color);
+    background: transparent;
+    color: var(--main-color);
+}
+
+.hero .right{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.hero .right img{
+    width: 80%;
+}
+
+@media screen and (max-width: 950px) {
+    .hero{
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .hero{
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .hero{
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
