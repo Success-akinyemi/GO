@@ -6,7 +6,7 @@ function Hero() {
   return (
     <div className='hero'>
         <div className='left'>
-            Earn <span>Cash backs</span>, <span>Royalties</span>, <span>Copuon</span> from every transaction with <div className='mainLogo'>Go</div>
+            Earn <span>money</span>, <span>royalties</span>, <span>points</span> <span>rewards</span>, and <span>discount</span> from your favorite brands every month for using the <div className='mainLogo'>GoCard</div> and in App purchases make every transactions count!.
         <br />
         <div className='text'>Cash back every time you shop</div>
         <Link to='/registration' className="link getStarted">
