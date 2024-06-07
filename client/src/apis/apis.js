@@ -38,7 +38,6 @@ export async function loginUsers(formData){
             return res.data
         }
     } catch (error) {
-        console.log('ERROR LOGIN', error)
         const errorMsg = error.response.data.data || 'Unable to Login'
         toast.error(errorMsg)
     }
