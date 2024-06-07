@@ -29,7 +29,7 @@
 .navbar .menu{
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 3rem;
 }
 
 .navbar .menu .link{
@@ -45,6 +45,10 @@
     .navbar{
         padding-left: 2rem;
         padding-right: 2rem;
+    }
+
+    .navbar.menu{
+        gap: 1.5rem;
     }
 }
 

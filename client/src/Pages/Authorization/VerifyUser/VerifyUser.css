@@ -1,0 +1,150 @@
+.verifyUser{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--main-color);
+}
+
+.verifyUser .mainLogo .icon{
+    font-size: 30px;
+}
+
+.verifyUser .line{
+    width: 80%;
+    height: 3px;
+    background: var(--main-color);
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.verifyUser .card{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 10px;
+    background: var(--white);
+    color: var(--main-color);
+    width: 25vw;
+    text-align: center;
+}
+
+.verifyUser .card div:first-child{
+    margin-top: -0.8rem;
+}
+
+.verifyUser .card h2{
+    font-size: 28px;
+    margin-bottom: 0.5rem;
+}
+
+.verifyUser .card small{
+    font-weight: 700;
+    color: var(--danger);
+    font-size: 16px;
+}
+
+.verifyUser .card .body{
+    margin-top: 2rem;
+    font-weight: 600;
+    font-size: 19px;
+}
+
+.verifyUser .card div:first-child small{
+    color: var(--main-color);
+}
+
+.verifyUser .card .action{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 20px;
+    cursor: pointer;
+    gap: 0.5rem;
+    text-align: center;
+}
+
+.verifyUser .card small.warn{
+    font-size: 18px;
+}
+
+.verifyUser .card .cardContent .spinner{
+    height: 160px;
+    width: 160px;
+    border: 8px solid var(--main-color);
+    border-color: var(--main-color) transparent var(--main-color) transparent;
+    border-radius: 50%;
+    margin: 0 auto;
+    animation: verifySPinner 1.3s ease infinite;
+}
+
+@keyframes verifySPinner {
+    to{
+        transform: rotate(360deg);
+    }
+}
+
+.verifyUser .errorText p{
+    font-family: "Mochiy Pop P One", sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    display: flex;
+    text-align: center;
+    color: var(--danger);
+}
+
+.verifyUser button{
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    background: var(--main-color);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Mochiy Pop P One", sans-serif;
+    font-size: 22px;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-top: 2rem;
+}
+
+.verifyUser button:hover{
+    transform: scale(0.97);
+}
+
+@media screen and (max-width: 1200px) {
+    .verifyUser .card{
+        width: 45vw;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .verifyUser .card{
+        width: 50vw;
+    }
+}
+
+@media screen and (max-width: 678px) {
+    .verifyUser .card{
+        width: 60vw;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .verifyUser .card{
+        width: 80vw;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .verifyUser .card{
+        width: 85vw;
+    }
+}

@@ -66,6 +66,21 @@
     border-bottom: 4px solid var(--main-color);
 }
 
+.registration .inputGroup.password{
+    position: relative;
+}
+
+.registration .inputGroup.password .eyeBox{
+    position: absolute;
+    right: 10px;
+    top: 30px;
+}
+
+.registration .inputGroup.password .eyeBox i{
+    font-size: 30px;
+    cursor: pointer;
+}
+
 .registration .inputGroup button{
     width: 100%;
     padding: 10px;
@@ -110,7 +125,7 @@
 
 @media screen and (max-width: 1200px) {
     .registration .card{
-        width: 40vw;
+        width: 45vw;
     }
 }
 

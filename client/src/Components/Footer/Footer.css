@@ -1,0 +1,35 @@
+.footer{
+    width: 100%;
+    margin-top: auto;
+    background: var(--main-color);
+    padding-left: 5rem;
+    padding-right: 5rem;
+    color: var(--white);
+}
+
+.footer .mainLogo{
+    font-size: 50px;
+    font-family: "Red Hat Display", sans-serif;
+    font-style: italic;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+}
+
+.footer .mainLogo .icon{
+    font-size: 30px;
+}
+
+@media screen and (max-width: 600px) {
+    .footer{
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .footer{
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}

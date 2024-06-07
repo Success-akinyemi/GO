@@ -1,0 +1,29 @@
+.loadingBtn{
+    width: 100%;
+    background: var(--main-color);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 10px;
+    font-family: "Mochiy Pop P One", sans-serif;
+    font-size: 22px;
+    transition: var(--transition);
+}
+
+.loadingBtn .spinner{
+    height: 35px;
+    width: 35px;
+    border: 4px solid var(--white);
+    border-color: var(--white) transparent var(--white) transparent;
+    border-radius: 50%;
+    margin: 0 auto;
+    animation: spin 1.3s ease infinite;
+}
+
+@keyframes spin {
+    to{
+        transform: rotate(360deg);
+    }
+}

@@ -21,3 +21,51 @@
   text-decoration: none;
   color: inherit;
 }
+
+.pageContainer {
+  display: flex;
+  width: 100vw;
+  min-height: 100vh;
+}
+
+.pageContainer .pageLeft {
+  width: 350px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.pageContainer .pageRight {
+  margin-left: 350px; /* This should match the width of the left side */
+  width: calc(100vw - 350px);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  margin-top: 80px;
+}
+
+@media screen and (max-width: 1000px) {
+  .pageContainer .pageLeft{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 0;
+  }
+
+  .pageContainer .pageRight{
+    width: 100vw;
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .pageContainer .pageLeft{
+    width: 0;
+  }
+
+  .pageContainer.pageRight{
+    margin-top: 90px;
+  }
+}
