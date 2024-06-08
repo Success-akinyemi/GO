@@ -46,7 +46,7 @@ function Sidebar({toggleMenu, handleTogleMenu}) {
             <div className="menu">
                 {
                     sidebarMenu.map((item, idx) => (
-                        <Link className={`link sidebarLink ${isActive(`/${item.link}`) ? 'active' : ''}`} to={`/${item?.link}`} key={idx}>
+                        <Link onClick={handleTogleMenu} className={`link sidebarLink ${isActive(`/${item.link}`) ? 'active' : ''}`} to={`/${item?.link}`} key={idx}>
                             {item?.name}
                         </Link>
                     ))
