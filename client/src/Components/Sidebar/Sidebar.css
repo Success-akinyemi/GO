@@ -92,6 +92,7 @@
 
     .sidebar.active{
         display: flex;
+        background: var(--main-color);
     }
     
     .sidebar .closeBox{

@@ -19,4 +19,24 @@ export const bettingPlatform = [
         platfrom: '1xBET',
         code: ''
     },
+    {
+        platfrom: 'Betway',
+        code: ''
+    },
+    {
+        platfrom: 'Bet365',
+        code: ''
+    },
+    {
+        platfrom: 'BETWINNER NIGERIA',
+        code: ''
+    },
+    {
+        platfrom: 'Bangbet Nigeria',
+        code: ''
+    },
+    {
+        platfrom: 'Nairabet',
+        code: ''
+    },
 ]

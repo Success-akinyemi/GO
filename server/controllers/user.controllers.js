@@ -1,4 +1,4 @@
-import UserModel from "../model/User";
+import UserModel from "../model/User.js";
 
 export async function updateUser(req, res){
     console.log('USER',  req.body.userId)

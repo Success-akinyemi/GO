@@ -2,6 +2,26 @@
    
 }
 
+.betCashback .text h2{
+    font-family: "Red Hat Display", sans-serif;
+    font-style: italic;
+    font-weight: 900;
+    color: var(--main-color);
+    margin-bottom: 0.5rem;
+}
+
+.betCashback .text p{
+    font-size: 19px;
+}
+
+.betCashback .uploadTicket{
+    margin-top: 2rem;
+}
+
+.betCashback .histroy{
+    margin-top: 3rem;
+}
+
 @media screen and (max-width: 1000px) {
     .betCashback{
         padding: 20px;

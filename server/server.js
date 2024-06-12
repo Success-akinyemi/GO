@@ -5,6 +5,9 @@ import cookieParser from 'cookie-parser'
 import cors from 'cors'
 
 import authRoutes from './routes/auth.routes.js'
+import userRoutes from './routes/user.routes.js'
+import bettingRoutes from './routes/betting.routes.js'
+
 
 const app = express()
 app.use(express.json())
@@ -36,6 +39,9 @@ app.get('/', (req, res) => {
 })
 
 app.use('/api/auth', authRoutes)
+app.use('/api/user', userRoutes)
+app.use('/api/betting', bettingRoutes)
+
 
 app.listen(PORT, () => {
     console.log(`Server runing on port http://localhost:${PORT}`)

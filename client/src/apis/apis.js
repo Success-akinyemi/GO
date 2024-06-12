@@ -32,7 +32,7 @@ export async function verifyUser({ id, token}){
 
 export async function loginUsers(formData){
     try {
-        const res = await axios.post('/auth/login', formData,)
+        const res = await axios.post('/auth/login', formData, {withCredentials: true})
         
         if(res.data){
             return res.data
@@ -45,13 +45,27 @@ export async function loginUsers(formData){
 
 export async function forgotPassword(formData){
     try {
-        const res = await axios.post('/auth/forgotPassword', formData,)
-        console.log('forgot password',res)
+        const res = await axios.post('/auth/forgotPassword', formData, {withCredentials: true})
+        //console.log('forgot password',res)
         if(res.data){
             return res.data
         }
     } catch (error) {
         const errorMsg = error.response.data.data || 'Unable to Proccess forgot password request'
+        toast.error(errorMsg)
+    }
+}
+
+export async function newBetSlip(formData){
+    try {
+        const res = await axios.post('/betting/newBetSlip', formData, {withCredentials: true})
+
+        if(res.data){
+            return res.data
+        }
+    } catch (error) {
+        console.log(error)
+        const errorMsg = error.response.data.data || 'Unable to upload bet ticket slip.'
         toast.error(errorMsg)
     }
 }
