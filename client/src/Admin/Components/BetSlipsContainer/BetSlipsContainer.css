@@ -1,0 +1,15 @@
+.BetSlipsContainer table{
+    width: 100%;
+    text-align: center;
+}
+
+.BetSlipsContainer .Verified{
+    cursor: pointer;
+}
+
+@media screen and (max-width: 500px) {
+    .BetSlipsContainer table thead th:nth-child(3),
+    .BetSlipsContainer table tbody td:nth-child(3){
+        display: none;
+    }
+}

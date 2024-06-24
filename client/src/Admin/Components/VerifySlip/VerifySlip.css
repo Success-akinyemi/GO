@@ -1,0 +1,9 @@
+.verifySlip > div{
+    display: flex;
+    flex-direction: column;
+}
+
+.verifySlip .btn{
+    margin-top: 1rem;
+    cursor: pointer;
+}

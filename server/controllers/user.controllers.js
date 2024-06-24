@@ -36,3 +36,21 @@ export async function updateUser(req, res){
         res.status(500).json({ success: false, data: error.message})
     }
 }
+
+export async function creditUserWallet(req, res){
+    const { id, amount } = req.body
+    try {
+        const user = await UserModel.findById({ _id: id })
+        if(!user){
+           return res.status(404).json({ success: false, data: 'User not found'})
+        }
+
+        user.walletBalance += amount
+        await user.save()
+
+        res.status(200).json({ success: true, data: 'Wallet balance updated'})
+    } catch (error) {
+        console.log('UNABLE TO UPDATE USER WALLET.',error)
+        res.status(500).json({ success: false, data: error.message || 'Unable to credit user wallet'})
+    }
+}

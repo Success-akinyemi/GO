@@ -118,3 +118,19 @@ export async function deactiveBetCashback(formData){
         toast.error(errorMsg)
     }
 }
+
+
+//ADmin
+export async function VerifyBetSlipCode(formData){
+    try {
+        const res = await axios.post('/betting/VerifyBetSlipCode', formData, {withCredentials: true})
+        
+        if(res.data){
+            return res.data
+        }
+    } catch (error) {
+        const errorMsg = error.response.data.data || 'Unable to Login'
+        toast.error(errorMsg)
+    }
+}
+

@@ -1,11 +1,11 @@
 .verifyBetSlip{
     display: flex;
     flex-direction: column;
+    padding: 20px;
 }
 
 .verifyBetSlip .options{
     display: flex;
-    padding: 20px;
     gap: 1.5rem;
 }
 
@@ -16,12 +16,13 @@
     font-weight: 500;
     border-radius: 10px;
     cursor: pointer;
-    border: 2px solid var(--main-color);
+    border: 3px solid var(--main-color);
     transition: var(--transition);
 }
 
-.verifyBetSlip .options .option:hover{
-    border: 2px solid var(--main-color);
+.verifyBetSlip .options .option:hover,
+.verifyBetSlip .options .option.active{
+    border: 3px solid var(--main-color);
     background: var(--white);
     color: var(--main-color);
 }
@@ -42,4 +43,10 @@
     justify-content: center;
     height: 25px;
     width: 25px;
+}
+
+.verifyBetSlip .slipsBody{
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
 }

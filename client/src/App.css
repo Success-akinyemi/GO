@@ -61,7 +61,17 @@
 /*END OF POPUP*/
 
 @media screen and (max-width: 400px) {
+  .popup.active {
+    top: 50%;
+    width: 90vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden;
+  }
+
   .popup-card{
-    width: 94%;
+    width: 100%;
+    overflow-x: hidden;
   }
 }

@@ -58,8 +58,8 @@ export function useFetchAllBetSlips(query){
     useEffect(() => {
         const fetchSlips = async () => {
             try {
-                const { data, status} = !query ? await axios.get(`/betting/getAllSlips`, {withCredentials: true}) : await axios.get(`/betting/getAllSlips`, {query}, {withCredentials: true})
-                //console.log('Data from Hooks>>>', data)
+                const { data, status} = !query ? await axios.get(`/betting/getAllSlips`, {withCredentials: true}) : await axios.get(`/betting/getAllSlips`, {query: query}, {withCredentials: true})
+                //console.log('Data from Hooks>>>', query)
 
                 if(status === 200){
                     setSlipsData({ slipsLoading: false, slipsData: data, slipsStatus: status, slipsServerError: null})

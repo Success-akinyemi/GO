@@ -145,7 +145,7 @@ export async function VerifyBetSlipCode(req, res){
 // get all bet slip verified or unverified
 export async function getAllSlips(req, res){
     const { query } = req.body
-
+    console.log('QUERY', query)
     try {
 
         const userSlips = query ? await BettingCodeModel.find({ verified: query }) : await BettingCodeModel.find()

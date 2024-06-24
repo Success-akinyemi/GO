@@ -18,11 +18,14 @@ import Wallet from './Pages/Wallet/Wallet'
 import AdminLogin from './Admin/AdminLogin/AdminLogin'
 import AdminDashboad from './Admin/AdminDashboad/AdminDashboad'
 import VerifyBetSlip from './Admin/VerifyBetSlip/VerifyBetSlip'
+import VerifySlip from './Admin/Components/VerifySlip/VerifySlip'
 
 
 function App() {
   const [ toggleMenu, setToggleMenu ] = useState(false)
   const [ selectedCard, setSelectedCard ] = useState(null)
+  const [ betUserId, setBetUserId ] = useState()
+  const [ betSlipId, setBetSlipId ] = useState()
 
   const renderPopupComponent = () => {
     switch(selectedCard) {
@@ -36,6 +39,12 @@ function App() {
         return (
             <div className='popup-card'>
               <DeactivateBetCashBack />
+            </div>
+        );
+      case 'verifyBetSlip' :
+        return (
+          <div className='popup-card'>
+              <VerifySlip betUserId={betUserId} betSlipId={betSlipId} />
             </div>
         );
     }
@@ -86,7 +95,7 @@ function App() {
 
           <Route path='/adminLogin' element={<AdminLogin />} />
           <Route path='/adminDashboad' element={<AdminDashboad handleTogleMenu={handleTogleMenu} toggleMenu={toggleMenu} />} />
-          <Route path='/verify-bet-slip' element={<VerifyBetSlip handleTogleMenu={handleTogleMenu} toggleMenu={toggleMenu} />} />
+          <Route path='/verify-bet-slip' element={<VerifyBetSlip handleTogleMenu={handleTogleMenu} toggleMenu={toggleMenu} setBetSlipId={setBetSlipId} setBetUserId={setBetUserId} setSelectedCard={setSelectedCard} />} />
 
         </Routes>
       </BrowserRouter>
