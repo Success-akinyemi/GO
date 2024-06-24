@@ -1,0 +1,155 @@
+.adminLogin{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--main-color);
+}
+
+.adminLogin .mainLogo .icon{
+    font-size: 30px;
+}
+
+.adminLogin .line{
+    width: 80%;
+    height: 3px;
+    background: var(--main-color);
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.adminLogin .card{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 10px;
+    background: var(--white);
+    color: var(--main-color);
+    width: 25vw;
+}
+
+.adminLogin .card .cardContent{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.adminLogin .card .cardContent .inputGroup{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+    font-family: "Mochiy Pop P One", sans-serif;
+}
+
+.adminLogin .inputGroup label{
+    margin-bottom: 0.5rem;
+    font-weight: 400;
+    font-size: 17px;
+    font-family: "Mochiy Pop P One", sans-serif;
+}
+
+.adminLogin .inputGroup input{
+    border: none;
+    outline: none;
+    border-bottom: 4px solid var(--dark);
+    transition: var(--transition);
+    font-size: 18px;
+    padding: 5px;
+    font-family: "Mochiy Pop P One", sans-serif;
+}
+
+.adminLogin .inputGroup input:focus{
+    border-bottom: 4px solid var(--main-color);
+}
+
+.adminLogin .inputGroup.password{
+    position: relative;
+}
+
+.adminLogin .inputGroup.password .eyeBox{
+    position: absolute;
+    right: 10px;
+    top: 30px;
+}
+
+.adminLogin .inputGroup.password .eyeBox i{
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.adminLogin .inputGroup button{
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    background: var(--main-color);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Mochiy Pop P One", sans-serif;
+    font-size: 22px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.adminLogin .inputGroup button:hover{
+    transform: scale(0.97);
+}
+
+.adminLogin small{
+    margin-top: -1rem;
+    font-weight: 500;
+    font-size: 15px;
+    color: var(--dark);
+    margin-bottom: 1rem;
+}
+
+.adminLogin small .link{
+    color: var(--main-color);
+    font-size: 16px;
+    font-weight: 800;
+}
+
+
+.adminLogin .errorText{
+    font-family: "Mochiy Pop P One", sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    display: flex;
+    text-align: center;
+    color: var(--danger);
+}
+
+@media screen and (max-width: 1200px) {
+    .adminLogin .card{
+        width: 45vw;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .adminLogin .card{
+        width: 50vw;
+    }
+}
+
+@media screen and (max-width: 678px) {
+    .adminLogin .card{
+        width: 60vw;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .adminLogin .card{
+        width: 80vw;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .adminLogin .card{
+        width: 85vw;
+    }
+}

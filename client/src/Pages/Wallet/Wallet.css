@@ -1,0 +1,103 @@
+.wallet{
+    display: flex;
+    flex-direction: column;
+}
+
+.wallet .top{
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    padding: 20px;
+    border-bottom: 3px solid var(--main-color);
+}
+
+.wallet .top .atmCard{
+    width: 450px;
+    height: 259px;
+    border-radius: 28px;
+    position: relative;
+    background: var(--main-color);
+    background-image: url(../../assets/card/bg.png);
+    background-size: cover;
+    color: var(--white);
+    padding: 20px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.wallet .top .head,
+.wallet .top .logo{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.wallet .top .atmCard .mainLogo{
+    font-size: 40px;
+    font-family: "Red Hat Display", sans-serif;
+    font-style: italic;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+}
+
+.wallet .top .atmCard .mainLogo .icon{
+    font-size: 30px;
+}
+
+.wallet .top .atmCard h5{
+    margin-left: 10px;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.wallet .top .atmCard .chip{
+    width: 60px;
+}
+
+.wallet .atmCard h5.number{
+    margin-top: 4px;
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+
+.wallet .atmCard h5.name{
+    margin-top: 20px;
+}
+
+.wallet .atmCard h6{
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.wallet .atmCard .cardDetails{
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto;
+    align-items: flex-end;
+}
+
+.wallet .atmCard .availableBalance{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 30px; 
+}
+
+.wallet .atmCard .availableBalance .visiblity{
+    cursor: pointer;
+    font-size: 30px;
+}
+
+.wallet .transactionsHistroy{
+    margin-top: 1rem;
+    padding: 20px;
+}
+
+@media screen and (max-width: 500px) {
+    .wallet .top .atmCard{
+        width: 98%;
+        height: 292px;
+    }
+}

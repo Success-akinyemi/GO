@@ -8,6 +8,7 @@
     width: calc(100vw - 350px);
     top: 0;
     right: 0;
+    background: var(--white);
 }
 
 .header h2{

@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const BettingSchema = new mongoose.Schema({
+const BettingCodeSchema = new mongoose.Schema({
     userId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'users',
@@ -14,10 +14,14 @@ const BettingSchema = new mongoose.Schema({
     bettingCompaning: {
         type: String,
         required: [true, 'betting company is required'],
+    },
+    verified: {
+        type: Boolean,
+        default: false
     }
 },
 {timestamps: true}
 )
 
-const BettingModel = mongoose.model('bettingModel', BettingSchema)
-export default BettingModel
+const BettingCodeModel = mongoose.model('bettingCodeModel', BettingCodeSchema)
+export default BettingCodeModel

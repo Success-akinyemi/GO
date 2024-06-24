@@ -11,4 +11,9 @@ export const sidebarMenu = [
         link: 'bet-cashback',
         icon: '',
     },
+    {
+        name: 'Wallet',
+        link: 'wallet',
+        icon: '',
+    },
 ]

@@ -43,6 +43,19 @@ export async function loginUsers(formData){
     }
 }
 
+export async function adminlogin(formData){
+    try {
+        const res = await axios.post('/admin/adminLogin', formData, {withCredentials: true})
+        
+        if(res.data){
+            return res.data
+        }
+    } catch (error) {
+        const errorMsg = error.response.data.data || 'Unable to Login'
+        toast.error(errorMsg)
+    }
+}
+
 export async function forgotPassword(formData){
     try {
         const res = await axios.post('/auth/forgotPassword', formData, {withCredentials: true})
@@ -60,11 +73,47 @@ export async function newBetSlip(formData){
     try {
         const res = await axios.post('/betting/newBetSlip', formData, {withCredentials: true})
 
-        if(res.data){
+        if(res?.data.success){
+            toast.success(res.data.data)
+            window.location.reload()
             return res.data
         }
     } catch (error) {
-        console.log(error)
+        //console.log(error)
+        const errorMsg = error.response.data.data || 'Unable to upload bet ticket slip.'
+        toast.error(errorMsg)
+    }
+}
+
+export async function activeBetCashback(formData){
+    try {
+        console.log('lop')
+        const res = await axios.post('/betting/activeBetCashback', formData, {withCredentials: true})
+
+        if(res?.data.success){
+            toast.success(res.data.data)
+            window.location.reload()
+            return res.data
+        }
+    } catch (error) {
+        console.log('activeBetCashback',error)
+        const errorMsg = error.response.data.data || 'Unable to upload bet ticket slip.'
+        toast.error(errorMsg)
+        console.log(errorMsg)
+    }
+}
+
+export async function deactiveBetCashback(formData){
+    try {
+        const res = await axios.post('/betting/deactiveBetCashback', formData, {withCredentials: true})
+
+        if(res?.data.success){
+            toast.success(res.data.data)
+            window.location.reload()
+            return res.data
+        }
+    } catch (error) {
+        //console.log(error)
         const errorMsg = error.response.data.data || 'Unable to upload bet ticket slip.'
         toast.error(errorMsg)
     }

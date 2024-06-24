@@ -1,4 +1,4 @@
-.sidebar{
+.adminSidebar{
     width: 350px;
     height: 100vh;
     display: flex;
@@ -7,7 +7,7 @@
     position: relative;
 }
 
-.sidebarContainer{
+.adminSidebar .sidebarContainer{
     width: 85%;
     height: 93vh;
     background: var(--main-color);
@@ -19,14 +19,14 @@
     padding: 20px;
 }
 
-.sidebar .top{
+.adminSidebar .top{
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
 }
 
-.sidebar .top img{
+.adminSidebar .top img{
     height: 70px;
     width: 70px;
     border: 3px solid var(--white);
@@ -34,18 +34,18 @@
     margin-bottom: 0.5rem;
 }
 
-.sidebar .top h3{
+.adminSidebar .top h3{
     font-size: 20px;
     font-weight: 400;
 }
 
-.sidebar .top h4{
+.adminSidebar .top h4{
     font-size: 15px;
     font-weight: 500;
     margin-top: -0.1rem;
 }
 
-.sidebar .menu{
+.adminSidebar .menu{
     display: flex;
     width: 100%;
     flex-direction: column;
@@ -54,23 +54,23 @@
     overflow-y: auto;
 }
 
-.sidebar .menu .sidebarLink{
+.adminSidebar .menu .sidebarLink{
     width: 100%;
     padding: 10px;
     font-weight: 600;
     font-size: 19px;
 }
 
-.sidebar .menu .sidebarLink.active{
+.adminSidebar .menu .sidebarLink.active{
     background: var(--white);
     color: var(--main-color);
 }
 
-.sidebar .closeBox{
+.adminSidebar .closeBox{
     display: none;
 }
 
-.sidebar .logout{
+.adminSidebar .logout{
     width: 100%;
     display: flex;
     align-items: center;
@@ -81,21 +81,21 @@
     transition: all 0.3s ease-in;
 }
 
-.sidebar .logout:hover{
+.adminSidebar .logout:hover{
     color: var(--danger);
 }
 
 @media screen and (max-width: 1000px) {
-    .sidebar{
+    .adminSidebar{
         display: none;
     }
 
-    .sidebar.active{
+    .adminSidebar.active{
         display: flex;
         background: var(--main-color);
     }
     
-    .sidebar .closeBox{
+    .adminSidebar .closeBox{
         display: block;
         position: absolute;
         background: rgb(255, 255, 255);

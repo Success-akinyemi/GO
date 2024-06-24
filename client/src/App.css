@@ -4,3 +4,64 @@
   flex-direction: column;
   min-height: 100vh;
 }
+
+/*POPUP */
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: auto;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: top 0.3s ease-in-out;
+  z-index: 99;
+}
+
+.popup.active {
+  top: 50%;
+}
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 98;
+}
+
+.popup-content {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.popup-card{
+  width: 350px;
+}
+
+.popup-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--color-danger);
+}
+
+.popup-close:hover {
+  opacity: 0.8;
+}
+
+/*END OF POPUP*/
+
+@media screen and (max-width: 400px) {
+  .popup-card{
+    width: 94%;
+  }
+}

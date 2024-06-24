@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 import crypto from 'crypto'
 import bcryptjs from 'bcryptjs'
 import jsonwebtoken from 'jsonwebtoken'
+import { type } from "os";
 
 const UserSchema = new mongoose.Schema({
     fullName: {
@@ -33,7 +34,7 @@ const UserSchema = new mongoose.Schema({
     },
     referredBy: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'supergigUsers'
+        ref: 'users'
     },
     referrals: {
         type: Array
@@ -45,6 +46,10 @@ const UserSchema = new mongoose.Schema({
     verified: {
         type: Boolean,
         default: false
+    },
+    walletBalance: {
+        type: Number,
+        default: 0
     },
     resetPasswordToken: String,
     resetPasswordExpire: Date,

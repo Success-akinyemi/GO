@@ -1,5 +1,28 @@
-.betCashback{
-   
+.betCashback .infoTop{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.betCashback .infoTop{
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+.betCashback .infoTop .right{
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+}
+
+.betCashback .infoTop .right div{
+    display: flex;
+    flex-direction: column;
+}
+
+.betCashback .right div p span{
+    font-weight: 600;
+    color: var(--main-color);
 }
 
 .betCashback .text h2{
@@ -18,8 +41,49 @@
     margin-top: 2rem;
 }
 
+.betCashback .rewards{
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.betCashback .rewards h3{
+    font-size: 19px;
+    color: var(--main-color);
+}
+
+.betCashback .rewards .btn{
+    margin-top: 2rem;
+}
+
 .betCashback .histroy{
     margin-top: 3rem;
+}
+
+.betCashback .slick-slide{
+    width: 250px !important;
+}
+
+.betCashback .slick-slide div .card{
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.betCashback .slick-slide div .card img{
+    width: 100px;
+}
+
+.betCashback .slick-slide div .card .label{
+    width: 90%;
+    background: var(--main-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: var(--white);
+    font-weight: 600;
 }
 
 @media screen and (max-width: 1000px) {

@@ -1,0 +1,12 @@
+.deactivateBetCashBack{
+    margin-top: 1rem;
+}
+
+.deactivateBetCashBack h1{
+    font-size: 24px;
+    color: var(--main-color);
+}
+
+.deactivateBetCashBack .btn{
+    margin-top: 1rem;
+}
