@@ -9,6 +9,7 @@
     top: 0;
     right: 0;
     background: var(--white);
+    z-index: 20;
 }
 
 .header h2{
@@ -28,6 +29,31 @@
     text-align: center;
 }
 
+.header .notifications{
+    position: relative;
+}
+
+.header .notifications span{
+    position: absolute;
+    background: var(--main-color);
+    color: var(--white);
+    padding: 6px;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    right: 1px;
+    top: 3px;
+    font-size: 14px;
+}
+
+.header .bellIcon{
+    font-size: 30px;
+    cursor: pointer;
+}
+
 .header .menuBox{
     display: none;
 }
@@ -44,5 +70,11 @@
 @media screen and (max-width: 1000px) {
     .header{
         width: 100%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .header{
+        margin-bottom: 1rem;
     }
 }

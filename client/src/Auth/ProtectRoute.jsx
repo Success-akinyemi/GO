@@ -29,5 +29,31 @@ function AuthorizeUser() {
     return tokenExist && user ? <Outlet /> : <Navigate to={'/'} />;
   }
 
+  function AuthorizeAdmin() {
+    const { currentUser: adminCurrentUser } = useSelector((state) => state.goAdmin);
+    const admin = adminCurrentUser?.data;
 
-  export {AuthorizeUser}
+    const token = localStorage.getItem('gotoken');
+    const tokenExist = !!token;
+    const navigate = useNavigate()
+    
+    useEffect(() => {
+      if (!tokenExist && !admin) {
+        console.log('NO USER');
+        toast.error('PLEASE LOGIN');
+      } else {
+        const decodedToken = jwtDecode(token);
+        
+        // Check if the token is expired
+        if (decodedToken.exp * 1000 < Date.now()) {
+          toast.error('Session expiried, Please login');
+          navigate('/login')
+        }
+      }
+    }, [adminCurrentUser, tokenExist]); 
+  
+    return tokenExist && admin ? <Outlet /> : <Navigate to={'/'} />;
+  }
+
+
+  export {AuthorizeUser, AuthorizeAdmin}

@@ -22,6 +22,11 @@ function BetSlipsContainer({query, setBetSlipId, setBetUserId, setSelectedCard})
         setBetSlipId(slip)
         setBetUserId(user)
     }
+    const handleReject = (slip, user) => {
+        setSelectedCard('rejectBetSlip')
+        setBetSlipId(slip)
+        setBetUserId(user)
+    }
   return (
     <div className='BetSlipsContainer'>
         {slipsLoading ? (
@@ -34,6 +39,7 @@ function BetSlipsContainer({query, setBetSlipId, setBetUserId, setSelectedCard})
                             <th>Betting Company</th>
                             <th>Date</th>
                             <th>Verified</th>
+                            <th>Reject</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -43,16 +49,28 @@ function BetSlipsContainer({query, setBetSlipId, setBetUserId, setSelectedCard})
                                 <td>{slip?.bettingCompaning}</td>
                                 <td>{formatDistanceToNow(new Date(slip?.createdAt))} ago</td>
                                 <td>{slip?.verified ? 
-                                    ('Verified') 
+                                    <span className="success">Verified</span> 
                                     : (
                                         <div onClick={() => handleVerify(slip?.slipId, slip?.userId)} className='button'>Verify</div>
                                     )
                                     }
                                 </td>
+                                {
+                                    <td>{slip?.verified ? 
+                                        <span className="success">Verified</span> :
+                                        slip?.rejected ? 
+                                        <span onClick={() => handleVerify(slip?.slipId, slip?.userId)} className="danger">Rejected</span>
+                                        : (
+                                            <div onClick={() => handleReject(slip?.slipId, slip?.userId)} className='button reject'>Reject</div>
+                                        )
+                                        }
+                                    </td>
+                                }
                             </tr>
                         ))}
                     </tbody>
-                </table>        )}
+                </table>        
+            )}
     </div>
   )
 }

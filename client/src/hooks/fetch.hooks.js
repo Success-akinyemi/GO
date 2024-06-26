@@ -75,3 +75,53 @@ export function useFetchAllBetSlips(query){
 
     return slipsData
 }
+
+/**GET ALL USERS */
+export function useFetchAllUsers(query){
+    const [ allUsersData, setAllUsersData ] = useState({ allUsersLoading: true, allUsersData: null, allUsersStatus: null, allUsersServerError: null })
+
+    useEffect(() => {
+        const fetchSlips = async () => {
+            try {
+                const { data, status} = !query ? await axios.get(`/user/getAllUsers/`, {withCredentials: true}) : await axios.get(`/user/getAllUser/${query}`, {withCredentials: true})
+                //console.log('Data from Hooks>>>', data)
+
+                if(status === 200){
+                    setAllUsersData({ allUsersLoading: false, allUsersData: data, allUsersStatus: status, allUsersServerError: null})
+                } else{
+                    setAllUsersData({ allUsersLoading: false, allUsersData: null, allUsersStatus: status, allUsersServerError: null})
+                }
+            } catch (error) {
+                setAllUsersData({ allUsersLoading: false, allUsersData: null, allUsersStatus: null, allUsersServerError: error})
+            }
+        }
+        fetchSlips()
+    }, [query])
+
+    return allUsersData
+}
+
+/**GET ALL USERS */
+export function useFetchUserAllTransactions(query){
+    const [ allTransactions, setAllTransactions ] = useState({ transactionLoading: true, transactionData: null, transactionStatus: null, transactionServerError: null })
+
+    useEffect(() => {
+        const fetchTransactions = async () => {
+            try {
+                const { data, status} = !query ? await axios.get(`/user/getAllUserNotification`, {withCredentials: true}) : await axios.get(`/user/getAllUserNotification`, {withCredentials: true})
+                //console.log('Data from Hooks>>>', data)
+
+                if(status === 200){
+                    setAllTransactions({ transactionLoading: false, transactionData: data, transactionStatus: status, transactionServerError: null})
+                } else{
+                    setAllTransactions({ transactionLoading: false, transactionData: null, transactionStatus: status, transactionServerError: null})
+                }
+            } catch (error) {
+                setAllTransactions({ transactionLoading: false, transactionData: null, transactionStatus: null, transactionServerError: error})
+            }
+        }
+        fetchTransactions()
+    }, [query])
+
+    return allTransactions
+}

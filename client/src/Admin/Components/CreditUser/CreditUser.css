@@ -1,0 +1,14 @@
+.creditUser{
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+    gap: 1rem;   
+}
+
+.creditUser input{
+    border: 3px solid var(--main-color);
+}
+
+.creditUser .btn{
+    width: 100%;
+}

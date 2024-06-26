@@ -48,7 +48,7 @@ function Dashboard({handleTogleMenu, toggleMenu}) {
                         <h1>
                             {
                                 showBalance ? (
-                                  <> NGN 1000</>
+                                  <> NGN {(user?.walletBalance).toLocaleString()}</>
                                 ) : (
                                     <>--.--</>
                                 )

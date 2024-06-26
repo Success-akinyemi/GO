@@ -1,0 +1,94 @@
+.allUsers{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.allUsers .loadingState{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.allUsers .users{
+    display: flex;
+    flex-direction: column;
+}
+
+.allUsers .search{
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.allUsers .search input{
+    width: 100%;
+    outline: none;
+}
+
+.allUsers .userCard{
+    display: flex;
+    flex-direction: column;
+}
+
+.allUsers .userCard .user{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 9px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 3px solid var(--main-color);
+}
+
+.allUsers .userCard .user > div{
+    flex: 1;
+}
+
+.allUsers .user .actions .btns{
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+
+.allUsers .btn .button{
+    text-align: center;
+}
+
+.allUsers .user .more{
+    display: none;
+}
+
+.allUsers .btn .button.danger{
+    background: var(--danger);
+}
+
+@media screen and (max-width: 650px) {
+    .allUsers .userCard .user{
+        position: relative;
+        gap: 1rem;
+    }
+
+    .allUsers .user .more{
+        display: flex;
+        position: absolute;
+        right: 0;
+        bottom: 4px;
+    }
+
+    .allUsers .userCard .more .moreIcon{
+        font-size: 30px;
+    }
+
+    .allUsers .user .actions .btns{
+        display: none;
+    }
+
+    .allUsers .user .actions:hover .btns{
+        display: flex;
+        position: absolute;
+        flex-direction: column;
+        background: #fff;
+        z-index: 12;
+    }
+
+}

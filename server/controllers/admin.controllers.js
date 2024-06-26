@@ -108,7 +108,7 @@ export async function adminLogin(req, res){
 
         const { passwordCode: code, passwordToken: tokenCode , ...userData } = user._doc
         
-        const token = jwt.sign({ id: user.userId, role: user.role }, process.env.JWT_SECRET)
+        const token = jwt.sign({ id: user.userId, role: user.role }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRE})
         const expiryDate = new Date(Date.now() + 10 * 60 * 60 * 1000)
         res.cookie('gotoken', token, { httpOnly: true, expires: expiryDate, sameSite: 'None', secure: true } ).status(200).json({ success: true, token: token, isVerified: true, data: {success: true, data: userData }})
     } catch (error) {
@@ -117,19 +117,7 @@ export async function adminLogin(req, res){
     }
 }
 
-//update passwordToken and passwaordCode
-
-
-export async function getAllUsers(req, res){
-    try {
-        const allUsers = await UserModel.find()
-
-        res.status(200).json({ success: true, data: allUsers })
-    } catch (error) {
-        console.log('UNABLE TO GET ALL USERS', error)
-        res.status(500).json({ success: false, data: error.message || 'Unable to get all uers'})
-    }
-}
+//update passwordToken and passwordCode
 
 export async function getAllAdmin(req, res){
     try {

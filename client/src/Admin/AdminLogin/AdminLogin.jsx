@@ -56,10 +56,10 @@ function AdminLogin() {
             const res = await adminlogin(formData)
             //console.log('res', res)
             if(res.success === true){
-                console.log('ERE', res)
+                //console.log('ERE', res)
                 dispatch(signInSuccess(res?.data))
                 localStorage.setItem('gotoken', res?.token)
-                navigate('/adminDashboad')
+                navigate('/admin-dashboard')
             }
         } catch (error) {
             

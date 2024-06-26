@@ -1,9 +1,9 @@
 import toast from 'react-hot-toast'
-import './VerifySlip.css'
+import { rejectBetSlipCode } from '../../../apis/apis'
 import { useState } from 'react'
-import { VerifyBetSlipCode } from '../../../apis/apis'
+import './RejectBetSlip.css'
 
-function VerifySlip({betSlipId, betUserId}) {
+function RejectBetSlip({betSlipId, betUserId}) {
     const [ loading, setLoading ] = useState(false)
     const [ formData, setFormData ] = useState({ userId: betUserId, slipId: betSlipId })
 
@@ -18,11 +18,11 @@ function VerifySlip({betSlipId, betUserId}) {
             return
         }
 
-        const confirm = window.confirm(`Are you sure you want to confirm bet: ${betSlipId} slip fro user?`)
+        const confirm = window.confirm(`Are you sure you want to reject bet: ${betSlipId} slip for user?`)
         if(confirm){
             try {
                 setLoading(true)
-                const res = await VerifyBetSlipCode(formData)
+                const res = await rejectBetSlipCode(formData)
                 console.log('RESPO', res)
                 if(res.success){
                     toast.success(res.data)
@@ -36,7 +36,7 @@ function VerifySlip({betSlipId, betUserId}) {
         }
     }
   return (
-    <form onSubmit={handleBetVerification} className='verifySlip'>
+    <form onSubmit={handleBetVerification} className='rejectBetSlip'>
         <div>
             <h2>Bet Slip ID:</h2>
             <p>{betSlipId}</p>
@@ -47,7 +47,7 @@ function VerifySlip({betSlipId, betUserId}) {
         </div>
         <div className="btn">
             <button disabled={loading} className="button">
-                {loading ?  'Verifying...' : 'Verify Slip'}
+                {loading ?  'Rejecting...' : 'Reject Slip'}
             </button>
         </div>
         {/*
@@ -57,4 +57,4 @@ function VerifySlip({betSlipId, betUserId}) {
   )
 }
 
-export default VerifySlip
+export default RejectBetSlip

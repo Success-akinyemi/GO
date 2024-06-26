@@ -5,6 +5,7 @@
     align-items: center;
     justify-content: center;
     position: relative;
+    z-index: 50;
 }
 
 .adminSidebar .sidebarContainer{
@@ -93,6 +94,7 @@
     .adminSidebar.active{
         display: flex;
         background: var(--main-color);
+        z-index: 50;
     }
     
     .adminSidebar .closeBox{

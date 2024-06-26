@@ -1,0 +1,13 @@
+.rejectBetSlip > div{
+    display: flex;
+    flex-direction: column;
+}
+
+.rejectBetSlip .btn{
+    margin-top: 1rem;
+    cursor: pointer;
+}
+
+.rejectBetSlip .btn .button{
+    background: var(--danger);
+}

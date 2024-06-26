@@ -9,7 +9,7 @@ function VerifyBetSlip({handleTogleMenu, toggleMenu, setBetSlipId, setBetUserId,
     const { slipsData, slipsLoading } = useFetchAllBetSlips()
     const data = slipsData?.data
     const unverifiedCount = data?.filter(item => item.verified === false)?.length;
-    console.log('DATA', slipsData?.data, unverifiedCount)
+    //console.log('DATA', slipsData?.data, unverifiedCount)
 
     const [ isVerified, setIsVerified ] = useState(null)
 

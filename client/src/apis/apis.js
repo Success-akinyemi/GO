@@ -119,8 +119,20 @@ export async function deactiveBetCashback(formData){
     }
 }
 
+export async function updateNotifications(formData){
+    try {
+        const res = await axios.post('/user/updateNotifications', formData, {withCredentials: true})
+        
+        if(res.data){
+            return res.data
+        }
+    } catch (error) {
+        const errorMsg = error.response.data.data || 'Unable to update Notifications'
+        toast.error(errorMsg)
+    }
+}
 
-//ADmin
+//ADMIN
 export async function VerifyBetSlipCode(formData){
     try {
         const res = await axios.post('/betting/VerifyBetSlipCode', formData, {withCredentials: true})
@@ -129,7 +141,33 @@ export async function VerifyBetSlipCode(formData){
             return res.data
         }
     } catch (error) {
-        const errorMsg = error.response.data.data || 'Unable to Login'
+        const errorMsg = error.response.data.data || 'Unable to verify bet code'
+        toast.error(errorMsg)
+    }
+}
+
+export async function rejectBetSlipCode(formData){
+    try {
+        const res = await axios.post('/betting/rejectBetSlipCode', formData, {withCredentials: true})
+        
+        if(res.data){
+            return res.data
+        }
+    } catch (error) {
+        const errorMsg = error.response.data.data || 'Unable to reject bet code'
+        toast.error(errorMsg)
+    }
+}
+
+export async function creditUserWallet(formData){
+    try {
+        const res = await axios.post('/user/creditUserWallet', formData, {withCredentials: true})
+        
+        if(res.data){
+            return res.data
+        }
+    } catch (error) {
+        const errorMsg = error.response.data.data || 'Unable to credit user'
         toast.error(errorMsg)
     }
 }

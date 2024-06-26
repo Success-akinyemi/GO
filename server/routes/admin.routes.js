@@ -12,7 +12,6 @@ router.get('/signout', controllers.signout)
 
 
 //GET 
-router.route('/getAllUsers').get(controllers.getAllUsers)
 router.route('/getAllAdmin').get(controllers.getAllAdmin)
 
 

@@ -1,3 +1,4 @@
+import TransactionModel from "../model/Transactions.js";
 import UserModel from "../model/User.js";
 
 export async function updateUser(req, res){
@@ -37,20 +38,85 @@ export async function updateUser(req, res){
     }
 }
 
-export async function creditUserWallet(req, res){
-    const { id, amount } = req.body
+export async function creditUserWallet(req, res) {
+    const { id, amount } = req.body;
+    const { userId } = req.admin;
+
     try {
-        const user = await UserModel.findById({ _id: id })
-        if(!user){
-           return res.status(404).json({ success: false, data: 'User not found'})
+        const user = await UserModel.findById({ _id: id });
+        if (!user) {
+            return res.status(404).json({ success: false, data: 'User not found' });
         }
 
-        user.walletBalance += amount
-        await user.save()
+        const currentBalance = Number(user.walletBalance);
+        const creditAmount = Number(amount);
 
-        res.status(200).json({ success: true, data: 'Wallet balance updated'})
+        user.walletBalance = currentBalance + creditAmount;
+        await user.save();
+
+        const newTransaction = await TransactionModel.create({
+            amount: creditAmount,
+            by: userId,
+            reason: 'Manual account funding for user',
+            type: 'credit',
+            for: user._id
+        });
+
+        res.status(200).json({ success: true, data: 'Wallet balance updated' });
     } catch (error) {
-        console.log('UNABLE TO UPDATE USER WALLET.',error)
-        res.status(500).json({ success: false, data: error.message || 'Unable to credit user wallet'})
+        console.log('UNABLE TO UPDATE USER WALLET.', error);
+        res.status(500).json({ success: false, data: error.message || 'Unable to credit user wallet' });
     }
+}
+
+
+export async function getAllUsers(req, res){
+    
+    const { id } = req.params
+    try {
+        let allUsers 
+        if(id){
+            allUsers = await UserModel.findById({ _id: id })
+            if(!allUsers){
+                return res.status(404).json({ success: false, data: 'User not found' })
+            }
+        } else {
+            allUsers = await UserModel.find()
+        }
+
+        res.status(200).json({ success: true, data: allUsers })
+    } catch (error) {
+        console.log('UNABLE TO GET ALL USERS', error)
+        res.status(500).json({ success: false, data: error.message || 'Unable to get all users'})
+    }
+}
+
+export async function getAllUserNotification(req, res){
+    const { _id } = req.user
+    try {
+        const notifications =  await TransactionModel.find({ for: _id })
+
+        res.status(200).json({ success: true, data: notifications })
+    } catch (error) {
+        console.log('UNABLE TO GET NOTIFICATIONS OF USER', error)
+        res.status(500).json({ success: false, data: error.merssage || 'unable to get user nortifiactions'})
+    }
+
+}
+
+export async function updateNotifications(req, res){
+    const { userId } = req.body
+    try {
+        // Find and update all notifications for the user
+        await TransactionModel.updateMany(
+            { for: userId, read: false }, // Match criteria
+            { $set: { read: true } } // Update action
+        );
+
+        res.status(200).json({ success: true, data: 'Notifications updated successfully' });
+    } catch (error) {
+        console.log('UNABLE TO UPDATE USER NOTIFICATIONS', error)
+        res.status(500).json({ succes: false, data: 'Unable to update notifications'})
+    }
+
 }

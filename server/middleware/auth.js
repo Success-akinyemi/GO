@@ -46,7 +46,7 @@ export const Protect = async (req, res, next) => {
   export const AdminProtect = async (req, res, next) => {
     //const token = req.cookies.token;
     const token = req.cookies.gotoken;
-    //console.log('TOKEN>>', token)
+    //console.log('ADMTOKEN>>', token)
   
     if (!token) {
       return res.status(401).json({ success: false, data: 'Not Allowed Please Login' });
@@ -81,7 +81,7 @@ export const Protect = async (req, res, next) => {
 
       req.admin = isAdmin
   
-      //console.log('user', isUser)
+      //console.log('admin', isAdmin)
       next();
     } catch (err) {
       if (err.name === 'TokenExpiredError') {
