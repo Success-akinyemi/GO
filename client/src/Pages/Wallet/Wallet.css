@@ -90,6 +90,12 @@
     font-size: 30px;
 }
 
+.wallet .actions{
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+}
+
 .wallet .transactionsHistroy{
     margin-top: 1rem;
     padding: 20px;

@@ -6,6 +6,7 @@ import cors from 'cors'
 
 import authRoutes from './routes/auth.routes.js'
 import userRoutes from './routes/user.routes.js'
+import monnifyRoutes from './routes/monnify.routes.js'
 import bettingRoutes from './routes/betting.routes.js'
 import adminRoutes from './routes/admin.routes.js'
 
@@ -43,6 +44,7 @@ app.get('/', (req, res) => {
 app.use('/api/auth', authRoutes)
 app.use('/api/user', userRoutes)
 app.use('/api/betting', bettingRoutes)
+app.use('/api/monnify', monnifyRoutes)
 app.use('/api/admin', adminRoutes)
 
 

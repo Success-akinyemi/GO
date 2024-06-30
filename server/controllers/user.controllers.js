@@ -101,7 +101,18 @@ export async function getAllUserNotification(req, res){
         console.log('UNABLE TO GET NOTIFICATIONS OF USER', error)
         res.status(500).json({ success: false, data: error.merssage || 'unable to get user nortifiactions'})
     }
+}
 
+export async function getAllUserTransactions(req, res){
+    const { _id } = req.user
+    try {
+        const transactions =  await TransactionModel.find({ acountFunding: true })
+
+        res.status(200).json({ success: true, data: transactions, for: _id })
+    } catch (error) {
+        console.log('UNABLE TO GET TRANSACTIONS OF USER', error)
+        res.status(500).json({ success: false, data: error.message || 'unable to get user transactions'})
+    }
 }
 
 export async function updateNotifications(req, res){

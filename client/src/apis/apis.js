@@ -132,6 +132,31 @@ export async function updateNotifications(formData){
     }
 }
 
+export async function monnifyFunding({amount}){
+    try {
+        const res = await axios.post('/monnify/makePaymentMonnify', {amount}, {withCredentials: true})
+        if(res.data){
+            const authorizationUrl = res.data.authorizationUrl;
+            window.location.href = authorizationUrl; 
+        }
+    } catch (error) {
+        const errorMsg = error.response.data.data || 'Unable to process payment'
+        toast.error(errorMsg)
+    }
+}
+
+export async function monnifyPaymentgVerify({paymentReference}){
+    try {
+        const res = await axios.post('/monnify/verifyTransactionWebhook', {paymentReference}, {withCredentials: true})
+        if(res.data){
+
+        }
+    } catch (error) {
+        const errorMsg = error.response.data.data || 'Unable to process payment'
+        toast.error(errorMsg)
+    }
+}
+
 //ADMIN
 export async function VerifyBetSlipCode(formData){
     try {

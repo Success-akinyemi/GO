@@ -101,14 +101,40 @@ export function useFetchAllUsers(query){
     return allUsersData
 }
 
-/**GET ALL USERS */
+/**GET ALL USERS NOTIFICATIONS*/
+export function useFetchUserAllNotifications(query){
+    const [ allNotifications, setAllNotifications ] = useState({ notificationLoading: true, notificationData: null, notificationStatus: null, notificationServerError: null })
+
+    useEffect(() => {
+        const fetchNotifications = async () => {
+            try {
+                const { data, status} = !query ? await axios.get(`/user/getAllUserNotification`, {withCredentials: true}) : await axios.get(`/user/getAllUserNotification`, {withCredentials: true})
+                //console.log('Data from Hooks>>>', data)
+
+                if(status === 200){
+                    setAllNotifications({ notificationLoading: false, notificationData: data, notificationStatus: status, notificationServerError: null})
+                } else{
+                    setAllNotifications({ notificationLoading: false, notificationData: null, notificationStatus: status, notificationServerError: null})
+                }
+            } catch (error) {
+                setAllNotifications({ notificationLoading: false, notificationData: null, notificationStatus: null, notificationServerError: error})
+            }
+        }
+        fetchNotifications()
+    }, [query])
+
+    return allNotifications
+}
+
+/**GET ALL USERS TRANSACTIONS*/
 export function useFetchUserAllTransactions(query){
     const [ allTransactions, setAllTransactions ] = useState({ transactionLoading: true, transactionData: null, transactionStatus: null, transactionServerError: null })
 
     useEffect(() => {
         const fetchTransactions = async () => {
             try {
-                const { data, status} = !query ? await axios.get(`/user/getAllUserNotification`, {withCredentials: true}) : await axios.get(`/user/getAllUserNotification`, {withCredentials: true})
+                console.log('TRANSAC', query)
+                const { data, status} = !query ? await axios.get(`/user/getAllUserTransactions`, {withCredentials: true}) : await axios.get(`/user/getAllUserTransactions`, {withCredentials: true})
                 //console.log('Data from Hooks>>>', data)
 
                 if(status === 200){

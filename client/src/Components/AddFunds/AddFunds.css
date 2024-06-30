@@ -1,0 +1,37 @@
+.addFunds{
+    display: flex;
+    flex-direction: column;
+}
+
+.addFunds h1{
+    font-size: 19px;
+    font-weight: 500;
+}
+
+.addFunds .inputGroup{
+    width: 100%;
+}
+
+.addFunds input{
+    width: 100%;
+}
+
+.addFunds .danger{
+    text-align: center;
+    font-weight: 600;
+    margin-top: -1.5rem;
+    margin-bottom: 1rem;
+}
+
+.addFunds .inputGroup{
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+.addFunds .btn{
+    width: 100%;
+}
+
+.addFunds .button{
+    width: 100%;
+}

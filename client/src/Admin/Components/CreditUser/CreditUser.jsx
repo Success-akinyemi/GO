@@ -8,7 +8,7 @@ function CreditUser({username, userId}) {
     const [ loading, setLoading ] = useState(false)
     const [ amount, setAmount ] = useState()
     const [ formData, setFormData ] = useState({ id: userId, amount: amount })
-    useEffect(() => {console.log(formData)}, [formData])
+    //useEffect(() => {console.log(formData)}, [formData])
 
     const handleCreditUser = async (e) => {
         e.preventDefault()

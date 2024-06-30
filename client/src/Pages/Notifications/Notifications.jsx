@@ -4,7 +4,7 @@ import Sidebar from '../../Components/Sidebar/Sidebar'
 import './Notifications.css'
 import { useSelector } from 'react-redux';
 import { updateNotifications } from '../../apis/apis';
-import { useFetchUserAllTransactions } from '../../hooks/fetch.hooks';
+import { useFetchUserAllNotifications } from '../../hooks/fetch.hooks';
 import { GoArrowUpRight } from "react-icons/go";
 import { GoArrowDownLeft } from "react-icons/go";
 import { formatDistanceToNow } from 'date-fns'
@@ -13,8 +13,8 @@ function Notifications({handleTogleMenu, toggleMenu}) {
     const { currentUser } = useSelector((state) => state.user);
     const user = currentUser?.data
     const [formData, setFormData ] = useState({ userId: user._id })
-    const { transactionData, transactionLoading } = useFetchUserAllTransactions()
-    const data = transactionData?.data
+    const { notificationData, notificationLoading } = useFetchUserAllNotifications()
+    const data = notificationData?.data
     const sortedData = data?.sort((a,b) => new Date(b.createdAt) - new Date(a.createdAt))
 
     useEffect(() => {
@@ -39,7 +39,7 @@ function Notifications({handleTogleMenu, toggleMenu}) {
             <Header title={'Notifications'} handleTogleMenu={handleTogleMenu} />
             <div className="cards">
                 {
-                    transactionLoading ? (
+                    notificationLoading ? (
                         <p>Loading...</p>
                     ) : (
                         sortedData?.map((item) => (

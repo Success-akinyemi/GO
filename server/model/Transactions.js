@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const TransactionSchema = new mongoose.Schema({
     type: {
         type: String
-        //credit of debit
+        //credit or debit
     },
     reason: {
         type: String,
@@ -18,6 +18,10 @@ const TransactionSchema = new mongoose.Schema({
     for: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'users',
+    },
+    acountFunding: {
+        type: Boolean,
+        default: false
     },
     read: {
         type: Boolean,

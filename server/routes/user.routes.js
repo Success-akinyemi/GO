@@ -13,6 +13,7 @@ router.route('/updateNotifications').post(Protect, controllers.updateNotificatio
 router.route('/getAllUsers').get(AdminProtect, controllers.getAllUsers)
 router.route('/getAllUser/:id').get(AdminProtect, controllers.getAllUsers)
 router.route('/getAllUserNotification').get(Protect, controllers.getAllUserNotification)
+router.route('/getAllUserTransactions').get(Protect, controllers.getAllUserNotification)
 
 
 

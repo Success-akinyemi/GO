@@ -23,6 +23,7 @@ import AllUsers from './Admin/AllUsers/AllUsers'
 import CreditUser from './Admin/Components/CreditUser/CreditUser'
 import RejectBetSlip from './Admin/Components/RejectBetSlip/RejectBetSlip'
 import Notifications from './Pages/Notifications/Notifications'
+import AddFunds from './Components/AddFunds/AddFunds'
 
 
 function App() {
@@ -64,6 +65,12 @@ function App() {
         return (
           <div className='popup-card'>
               <CreditUser username={username} userId={userId} />
+            </div>
+        );
+      case 'addFunds' :
+        return (
+          <div className='popup-card'>
+              <AddFunds username={username} userId={userId} />
             </div>
         );
     }
@@ -112,7 +119,7 @@ function App() {
             <Route path='/bet-cashback' element={<BetCashback handleTogleMenu={handleTogleMenu} toggleMenu={toggleMenu} setSelectedCard={setSelectedCard} />} />
           </Route>
           <Route element={<AuthorizeUser />}>
-            <Route path='/wallet' element={<Wallet handleTogleMenu={handleTogleMenu} toggleMenu={toggleMenu} />} />
+            <Route path='/wallet' element={<Wallet handleTogleMenu={handleTogleMenu} toggleMenu={toggleMenu} setSelectedCard={setSelectedCard} />} />
           </Route>
 
           <Route path='/admin-login' element={<AdminLogin />} />

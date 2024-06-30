@@ -4,12 +4,35 @@ import Sidebar from '../../Components/Sidebar/Sidebar'
 import TransactionHistroy from '../../Components/TransactionHistroy/TransactionHistroy'
 import './Wallet.css'
 import { useSelector } from 'react-redux'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import ChipImg from '../../assets/card/chip.png'
 import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa'
+import { useLocation } from 'react-router-dom';
+import { monnifyPaymentgVerify } from '../../apis/apis'
 
-function Wallet({handleTogleMenu, toggleMenu}) {
-  const { currentUser } = useSelector((state) => state.user);
+function Wallet({handleTogleMenu, toggleMenu, setSelectedCard}) {
+    const location = useLocation();
+
+    useEffect(() => {
+        const query = new URLSearchParams(location.search);
+        const paymentReference = query.get('paymentReference');
+    
+        if (paymentReference) {
+          const postPaymentReference = async (reference) => {
+            try {
+              const response = await monnifyPaymentgVerify({ paymentReference: reference });
+              console.log('Server response:', response.data);
+            } catch (error) {
+              console.error('Error posting payment reference:', error);
+            }
+          };
+    
+          postPaymentReference(paymentReference);
+        }
+      }, [location]);
+
+      
+    const { currentUser } = useSelector((state) => state.user);
   const user = currentUser?.data
   const createdAt = user?.createdAt;
   const date = new Date(createdAt);
@@ -47,7 +70,7 @@ function Wallet({handleTogleMenu, toggleMenu}) {
                         <h1>
                             {
                                 showBalance ? (
-                                  <> NGN 1000</>
+                                  <> NGN {(user?.walletBalance).toLocaleString()}</>
                                 ) : (
                                     <>--.--</>
                                 )
@@ -77,6 +100,12 @@ function Wallet({handleTogleMenu, toggleMenu}) {
                             <h5>{formattedDate}</h5>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <div className="actions">
+                <div className="btn" onClick={() => setSelectedCard('addFunds')}>
+                    <button className="button">Fund Wallet</button>
                 </div>
             </div>
 
