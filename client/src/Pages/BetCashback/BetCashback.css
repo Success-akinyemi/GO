@@ -37,6 +37,21 @@
     font-size: 19px;
 }
 
+.betCashback .credit{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+}
+
+.betCashback p{
+    font-size: 18px;
+}
+
+.betCashback .credit small{
+    font-weight: 600;
+    margin-top: 10px;
+}
+
 .betCashback .uploadTicket{
     margin-top: 2rem;
 }

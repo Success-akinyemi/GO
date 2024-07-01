@@ -24,6 +24,7 @@ import CreditUser from './Admin/Components/CreditUser/CreditUser'
 import RejectBetSlip from './Admin/Components/RejectBetSlip/RejectBetSlip'
 import Notifications from './Pages/Notifications/Notifications'
 import AddFunds from './Components/AddFunds/AddFunds'
+import BuyCredit from './Components/BuyCredit/BuyCredit'
 
 
 function App() {
@@ -71,6 +72,12 @@ function App() {
         return (
           <div className='popup-card'>
               <AddFunds username={username} userId={userId} />
+            </div>
+        );
+      case 'buyCredit':
+        return (
+          <div className='popup-card'>
+              <BuyCredit />
             </div>
         );
     }

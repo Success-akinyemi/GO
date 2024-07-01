@@ -85,6 +85,17 @@ function BetCashback({handleTogleMenu, toggleMenu, setSelectedCard}) {
           </div>
 
         </div>
+        
+        <div className="credit">
+          <p>Credit Balance: <span>{betData?.bettingWallet}</span></p>
+          <div onClick={() => setSelectedCard('buyCredit')} className="btn">
+            <button className='button'>
+              Buy Credit
+            </button>
+          </div>
+          <small>In order to upload a ticket, a minimium of 20 credit is required.</small>
+        </div>
+
         <div className="text">
           <h2>Cash back bounues</h2>
           <p><b>Get paid on every ticket you play that cuts.</b> </p>

@@ -7,6 +7,7 @@ const router = express.Router()
 router.route('/activeBetCashback').post(Protect, controllers.activeBetCashback)
 router.route('/deactiveBetCashback').post(Protect, controllers.deactiveBetCashback)
 router.route('/newBetSlip').post(Protect, controllers.newBetSlipId)
+router.route('/buyCredit').post(Protect, controllers.buyCredit)
 router.route('/VerifyBetSlipCode').post(AdminProtect, controllers.VerifyBetSlipCode)
 router.route('/rejectBetSlipCode').post(AdminProtect, controllers.rejectBetSlipCode)
 

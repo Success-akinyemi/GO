@@ -3,15 +3,18 @@ import Header from '../../Components/Header/Header'
 import Sidebar from '../../Components/Sidebar/Sidebar'
 import TransactionHistroy from '../../Components/TransactionHistroy/TransactionHistroy'
 import './Wallet.css'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
 import ChipImg from '../../assets/card/chip.png'
 import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa'
 import { useLocation } from 'react-router-dom';
 import { monnifyPaymentgVerify } from '../../apis/apis'
+import toast from 'react-hot-toast'
+import { signInSuccess } from '../../redux/user/userSlice'
 
 function Wallet({handleTogleMenu, toggleMenu, setSelectedCard}) {
     const location = useLocation();
+    const dispatch = useDispatch()
 
     useEffect(() => {
         const query = new URLSearchParams(location.search);
@@ -21,7 +24,11 @@ function Wallet({handleTogleMenu, toggleMenu, setSelectedCard}) {
           const postPaymentReference = async (reference) => {
             try {
               const response = await monnifyPaymentgVerify({ paymentReference: reference });
-              console.log('Server response:', response.data);
+              //console.log('Server response:', response.data);
+              if(response.data.success){
+                toast.success('Payment Successful')
+                dispatch(signInSuccess(response.data))
+              }
             } catch (error) {
               console.error('Error posting payment reference:', error);
             }

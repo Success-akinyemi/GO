@@ -1,0 +1,19 @@
+.buyCredit{
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+}
+
+.buyCredit p{
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.buyCredit .inputGroup{
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+
+.buyCredit .input{
+    width: 100%;
+}

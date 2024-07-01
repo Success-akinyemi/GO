@@ -119,6 +119,20 @@ export async function deactiveBetCashback(formData){
     }
 }
 
+export async function buyCredit({credit}){
+    try {
+        const res = await axios.post('/betting/buyCredit', {credit}, {withCredentials: true})
+
+        if(res?.data.success){
+            return res.data.data
+        }
+    } catch (error) {
+        //console.log(error)
+        const errorMsg = error.response.data.data || 'Unable to upload bet ticket slip.'
+        toast.error(errorMsg)
+    }
+}
+
 export async function updateNotifications(formData){
     try {
         const res = await axios.post('/user/updateNotifications', formData, {withCredentials: true})
@@ -149,7 +163,8 @@ export async function monnifyPaymentgVerify({paymentReference}){
     try {
         const res = await axios.post('/monnify/verifyTransactionWebhook', {paymentReference}, {withCredentials: true})
         if(res.data){
-
+            //console.log(res.data)
+            return res.data
         }
     } catch (error) {
         const errorMsg = error.response.data.data || 'Unable to process payment'
@@ -188,7 +203,7 @@ export async function creditUserWallet(formData){
     try {
         const res = await axios.post('/user/creditUserWallet', formData, {withCredentials: true})
         
-        if(res.data){
+        if(res.data.success){
             return res.data
         }
     } catch (error) {

@@ -12,6 +12,10 @@ const BettingPointBalanceSchema = new mongoose.Schema({
     active: {
         type: Boolean,
         default: false
+    },
+    bettingWallet: {
+        type: Number,
+        default: 0
     }
 },
 {timestamps: true}

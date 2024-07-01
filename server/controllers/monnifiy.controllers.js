@@ -1,8 +1,11 @@
-//import { encodeBase64 } from 'bcryptjs';
 import schedule  from 'node-schedule'
 import axios from 'axios'
 import MonnifyModel from '../model/Monnify.js';
 import { v4 as uuidv4 } from 'uuid';
+import TemporaryFundingKeyModel from '../model/TemporaryFundingKey.js';
+import UserModel from '../model/User.js';
+import FundingModel from '../model/FundingModel.js';
+import TransactionModel from '../model/Transactions.js';
 
 // Scheduler to run every 45 minute
 const rule = new schedule.RecurrenceRule();
@@ -97,6 +100,10 @@ export async function initialzePayment(req, res){
         )
 
         console.log(response.data.responseBody.checkoutUrl)
+        const temporaryFund = await TemporaryFundingKeyModel.create({
+            paymentReference: response.data.responseBody.paymentReference,
+            transactionReference: response.data.responseBody.transactionReference,
+        })
         res.send({ authorizationUrl: response.data.responseBody.checkoutUrl });
 
     } catch (error) {
@@ -108,7 +115,7 @@ export async function initialzePayment(req, res){
 
 //webhooks
 export async function transactionWebhook(req, res){
-    console.log('MONNIFY API>>>', req)
+    console.log('MONNIFY API SERVER>>>', req.body)
     try {
         
     } catch (error) {
@@ -116,11 +123,89 @@ export async function transactionWebhook(req, res){
     }
 }
 
-export async function verifyTransactionWebhook(req, res){
-    console.log('MONNIFY API>>>', req.body)
+export async function verifyTransactionWebhook(req, res) {
+    console.log('MONNIFY API>>>', req.body);
+
+    const refrence = req.body.paymentReference;
+    const monnifyUrl = process.env.MONNIFY_API;
+
     try {
-        
+        const findtransactionReference = await TemporaryFundingKeyModel.findOne({ paymentReference: refrence })
+        if(!findtransactionReference){
+            return res.end()
+            //return res.status(404).json({ success: false, data: 'Invalid Payment Refrence'})
+        }
+        if(findtransactionReference.verified === true){
+            return res.end()
+            //return res.status(404).json({ success: false, data: 'Transaction already verified'})
+        }
+
+        const transactionReference = findtransactionReference.transactionReference
+        console.log('TRANSCTION RREF',transactionReference)
+
+        const tokenDoc = await MonnifyModel.findOne();
+        const token = tokenDoc ? tokenDoc.apikey : null;
+
+        if (!token) {
+            return res.status(404).json({ success: false, data: 'Monnify token not found' });
+        }
+
+        const response = await axios.get(
+            `${monnifyUrl}/api/v2/transactions/${encodeURIComponent(transactionReference)}`, 
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                }
+            }
+        );
+
+        console.log('RESPONSE', response.data.responseBody);
+        console.log('RESPONSE', response.data.responseBody.customer);
+        const data = response.data.responseBody
+
+        const findUser = await UserModel.findOne({ email: response.data.responseBody.customer.email })
+        if(data.paymentStatus === 'PAID'){
+            if(!findUser){
+                return res.status(404).json({ success: false, data: 'Invalid User - Not Found' })
+            }
+            
+            console.log('first',findUser.walletBalance)
+            findUser.walletBalance = Number(findUser.walletBalance) + Number(response.data.responseBody.amountPaid);
+            await findUser.save()
+            console.log('first',findUser.walletBalance)
+
+            
+            const newFunding = await FundingModel.create({
+                amount: data.amountPaid,
+                paidBy: findUser._id,
+                email: findUser.email,
+                paidOn: data.paidOn,
+                paymentDescription: data.paymentDescription,
+                paymentMethod: data.paymentMethod,
+                paymentReference: data.paymentReference,
+                transactionReference: data.transactionReference,
+                settlementAmount: data.settlementAmount,
+            })
+
+            const newNotification = await TransactionModel.create({
+                amount: data.amountPaid,
+                reason: 'Wallet Funding',
+                type: 'credit',
+                for: findUser._id,
+                by: 'Monnify payment gatewy'
+            })
+
+            findtransactionReference.verified = true
+            await findtransactionReference.save()
+
+            await TemporaryFundingKeyModel.deleteOne({ paymentReference: refrence })
+        }
+
+        const { resetPasswordToken, resetPasswordExpire, password, ...userData } = findUser._doc
+        res.status(200).json({ success: true, data: {success: true, data: userData } });
     } catch (error) {
-        
+        console.log('UNABLE TO VERIFY TRANSACTION', error.response ? error.response.data : error);
+        res.status(500).json({ success: false, data: error.message || 'Unable to verify transaction' });
     }
 }

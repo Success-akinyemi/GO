@@ -94,6 +94,7 @@
     margin-top: 2rem;
     display: flex;
     align-items: center;
+    padding: 20px;
 }
 
 .wallet .transactionsHistroy{

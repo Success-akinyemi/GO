@@ -42,15 +42,49 @@ export async function deactiveBetCashback(req, res){
     }
 }
 
+export async function buyCredit(req, res){
+    const { _id, walletBalance } = req.user
+    const { credit } = req.body
+
+    try {
+        const total = credit * 20
+        if(walletBalance < total){
+            return res.status(402).json({ succes: false, data: 'Insuficient wallet fund, top up your acount'})
+        }
+        const betUser = await BettingPointBalanceModel.findOne({ userId: _id })
+        if(!betUser){
+            return res.status(404).json({ succes: false, data: 'User not found'})
+        }
+        if(betUser.active === false){
+            return res.status(406).json({ succes: false, data: 'Your bet cash back status is false. Activate it'})
+        }
+        betUser.bettingWallet = Number(betUser.bettingWallet) + Number(credit);
+        await betUser.save()
+
+        const user = await UserModel.findById(_id)
+        user.walletBalance = Number(user.walletBalance) - Number(total);
+        await user.save()
+        console.log('first DONE')
+        const { resetPasswordToken, resetPasswordExpire, password, ...userData } = user._doc
+        res.status(200).json({ success: true, data: {success: true, data: userData } });
+    } catch (error) {
+        console.log('UNABLE TO BUT CREDIT FOR BETTING', error)
+        res.status(500).json({ succes: false, data: error.message || 'Unable to buy credit'})
+    }
+} 
 
 export async function newBetSlipId(req, res){
     const { _id } = req.user
     const { slipId, bettingCompaning } = req.body
+    
     try {
         const trimmedSlipId = slipId.trim()
         const getUser = BettingPointBalanceModel.findOne({ userId: _id })
         if(getUser.active === false){
             return res.status(403).json({ succes: false, data: 'You account is not active to upload ticket code'})
+        }
+        if(getUser.bettingWallet < 20){
+            return res.status(403).json({ succes: false, data: 'Insufficient betting wallet credit to upload ticket'})
         }
         if(!_id){
             return res.status(404).json({ success: false, data: 'Invalid user'})
@@ -117,6 +151,8 @@ export async function getBetPoint(req, res){
     }
 }
 
+/**
+ * 
 // auto daliy deduction
 // Scheduler to run every 1 minute
 const rule = new schedule.RecurrenceRule();
@@ -172,6 +208,7 @@ const task = schedule.scheduleJob(rule, async () => {
         console.log('UNABLE TO UPDATE USER WALLETS AND STATUSES.', error);
     }
 });
+ */
 
 
 
