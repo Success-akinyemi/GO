@@ -49,6 +49,10 @@ function UploadBetSlipTicket() {
                 }
             </select>
         </div>
+        <div className="inputGroup">
+            <label htmlFor="">Enter Bet amount staked</label>
+            <input onChange={handleChange} type="number" placeholder='amount staked' id='amountStaked' />
+        </div>
 
         <div className="btn">
             {

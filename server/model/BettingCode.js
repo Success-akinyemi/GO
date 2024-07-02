@@ -15,6 +15,9 @@ const BettingCodeSchema = new mongoose.Schema({
         type: String,
         required: [true, 'betting company is required'],
     },
+    amountStaked:{
+        type: Number,
+    },
     verified: {
         type: Boolean,
         default: false

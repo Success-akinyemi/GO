@@ -64,7 +64,6 @@ export async function buyCredit(req, res){
         const user = await UserModel.findById(_id)
         user.walletBalance = Number(user.walletBalance) - Number(total);
         await user.save()
-        console.log('first DONE')
         const { resetPasswordToken, resetPasswordExpire, password, ...userData } = user._doc
         res.status(200).json({ success: true, data: {success: true, data: userData } });
     } catch (error) {
@@ -75,7 +74,7 @@ export async function buyCredit(req, res){
 
 export async function newBetSlipId(req, res){
     const { _id } = req.user
-    const { slipId, bettingCompaning } = req.body
+    const { slipId, bettingCompaning, amountStaked } = req.body
     
     try {
         const trimmedSlipId = slipId.trim()
@@ -99,8 +98,11 @@ export async function newBetSlipId(req, res){
         }
 
         const newSlip = await BettingCodeModel.create({
-            userId: _id, slipId: trimmedSlipId, bettingCompaning
+            userId: _id, slipId: trimmedSlipId, bettingCompaning, amountStaked
         })
+
+        getUser.bettingWallet -= 1
+        await getUser.save()
 
         res.status(201).json({ success: true, data: 'Slip Id saved successfully'})
     } catch (error) {

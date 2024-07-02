@@ -124,7 +124,7 @@ export async function buyCredit({credit}){
         const res = await axios.post('/betting/buyCredit', {credit}, {withCredentials: true})
 
         if(res?.data.success){
-            return res.data.data
+            return res.data
         }
     } catch (error) {
         //console.log(error)

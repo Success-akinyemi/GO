@@ -4,6 +4,7 @@ import Button from '../Helpers/Button/Button'
 import toast from 'react-hot-toast'
 import { buyCredit } from '../../apis/apis'
 import { useDispatch } from 'react-redux'
+import { signInSuccess } from '../../redux/user/userSlice'
 
 function BuyCredit() {
     const dispatch = useDispatch()
@@ -22,7 +23,9 @@ function BuyCredit() {
             setLoading(true)
             const res = await buyCredit({credit})
             if(res.data.success){
-                console.log('crediti', res)
+                toast.success('Credit purchase successful')
+                dispatch(signInSuccess(res.data))
+                window.location.reload()
             }
         } catch (error) {
             
