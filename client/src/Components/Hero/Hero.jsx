@@ -14,7 +14,7 @@ function Hero() {
   return (
     <div className='hero'>
         <div className='left'>
-            Earn <span>money</span>, <span>royalties</span>, <span>points</span> <span>rewards</span>, and <span>discount</span> from your favorite brands every month for using the <div className='mainLogo'>GoCard</div> and in App purchases make every transactions count!.
+            Earn <span>money</span>, <span>royalties</span>, <span>points</span> <span>rewards</span>, and <span>discount</span> from your favorite brands using <div className='mainLogo'>GoExpress</div> with in App purchases make every transactions count!.
         <br />
         <div className='text'>
           <span>{text}</span>

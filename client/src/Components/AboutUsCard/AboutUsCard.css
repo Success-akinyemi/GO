@@ -1,0 +1,49 @@
+.aboutUsCard{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    min-height: 100vh;
+    position: relative;
+    padding-left: 5rem;
+    padding-right: 5rem;
+    font-size: 19px;
+    margin-top: 65px;
+}
+
+.aboutUsCard .container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.aboutUsCard .title{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 30px;
+}
+
+.aboutUsCard .para{
+    font-size: 19px;
+    line-height: 22px;
+}
+
+.aboutUsCard .howBetting{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 1.5rem;
+}
+
+@media screen and (max-width: 500px) {
+    .aboutUsCard{
+        padding-left: 1rem;
+        padding-right: 1rem;
+        font-size: 16px;
+    }
+
+    .aboutUsCard .title{
+        font-size: 20px;
+    }
+}

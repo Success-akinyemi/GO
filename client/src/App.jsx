@@ -25,6 +25,7 @@ import RejectBetSlip from './Admin/Components/RejectBetSlip/RejectBetSlip'
 import Notifications from './Pages/Notifications/Notifications'
 import AddFunds from './Components/AddFunds/AddFunds'
 import BuyCredit from './Components/BuyCredit/BuyCredit'
+import AboutUs from './Pages/AboutUs/AboutUs'
 
 
 function App() {
@@ -109,6 +110,7 @@ function App() {
       )}
         <Routes>
           <Route path='/' element={<LandingPage />} />
+          <Route path='/aboutUs' element={<AboutUs/>} />
           <Route path='/login' element={<Login />} />
           <Route path='/registration' element={<Registration />} />
           <Route path='/:id/verify/:token' element={<VerifyUser />} />

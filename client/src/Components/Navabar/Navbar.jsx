@@ -5,10 +5,10 @@ import { PiWavesBold } from "react-icons/pi";
 function Navbar() {
   return (
     <div className='navbar'>
-        <div className="mainLogo">
+        <Link to='/' className="link mainLogo">
             Go <PiWavesBold className='icon' />
 
-        </div>
+        </Link>
 
         <div className="menu">
             <Link className='link' to='/registration' >Get Started</Link>

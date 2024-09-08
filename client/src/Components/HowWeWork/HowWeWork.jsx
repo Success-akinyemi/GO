@@ -43,6 +43,10 @@ function HowWeWork() {
         <div className="cta">
             <Link className="link">Get Started</Link>
         </div>
+
+        <div className="more">
+            <Link className='link' to='/aboutUs'>Learn More</Link>
+        </div>
     </div>
   )
 }

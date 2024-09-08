@@ -64,6 +64,21 @@
     transform: scale(1.04);    
 }
 
+.howWeWork .more{
+    margin-top: 2rem;
+}
+
+.howWeWork .more .link{
+    color: var(--main-color);
+    font-size: 21px;
+    text-decoration: underline;
+    transition:  var(--transition);
+}
+
+.howWeWork .more .link:hover{
+    transform: scale(1.04);    
+}
+
 @media screen and (max-width: 600px) {
     .howWeWork{
         padding-left: 2rem;

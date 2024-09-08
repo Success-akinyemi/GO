@@ -11,7 +11,7 @@ function Header({title, handleTogleMenu}) {
   const { transactionData, transactionLoading } = useFetchUserAllTransactions()
   const data = transactionData?.data
   const unverifiedCount = data?.filter(item => item.read === false)?.length;
-  console.log('COUNT', unverifiedCount)
+
   return (
     <div className="header">
     <h2>{title}</h2>
