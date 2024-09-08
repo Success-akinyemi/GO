@@ -1,0 +1,10 @@
+.aboutUs{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.aboutUs .content{
+    margin-bottom: 0.5rem;
+}

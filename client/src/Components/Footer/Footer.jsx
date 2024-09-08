@@ -32,6 +32,7 @@ function Footer() {
             <div className="links">
               <Link className='link' to='/registration'>Get Started</Link>
               <Link className='link' to='/login'>Login</Link>
+              <Link className='link' to='/aboutUs'>About Us</Link>
             </div>
           </div>
 
